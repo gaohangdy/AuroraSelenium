@@ -1,73 +1,55 @@
 package jp.co.amway.aurora.test.Loginwau0104;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
+import jp.co.amway.aurora.test.util.AuroraTestCase;
 
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+public class D01003007 extends AuroraTestCase {
+	private StringBuffer verificationErrors = new StringBuffer();
 
-public class D01003007 extends TestCase {
-  private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+	}
 
-  @Before
-  public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "https://ipdev.amwaylive.com/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
+	@Test
+	public void testD01003007() throws Exception {
+		driver.get(baseUrl
+				+ "aurora/source/ts/uc_common/view/WA-C-01-F012.html");
+		driver.findElement(
+				By.cssSelector("a.naviOpen.naviOpenBtn > div > span")).click();
+		driver.findElement(By.id("aMenuLogin")).click();
+		driver.findElement(By.linkText("パスワードを忘れた方")).click();
+		testUtil.createScreenShot(driver);
+		driver.findElement(By.id("txtIboNumber")).clear();
+		driver.findElement(By.id("txtIboNumber")).sendKeys("5243017");
+		driver.findElement(By.id("txtPin")).clear();
+		driver.findElement(By.id("txtPin")).sendKeys("8300");
+		testUtil.createScreenShot(driver);
+		driver.findElement(By.cssSelector("#btnSetPassword > div")).click();
+		testUtil.createScreenShot(driver);
+		driver.findElement(By.cssSelector("img[alt=\"ヘルプ\"]")).click();
+	}
 
-  @Test
-  public void testD01003007() throws Exception {
-    driver.get(baseUrl + "/aurora/source/ts/uc_common/view/WA-C-01-F012.html");
-    driver.findElement(By.cssSelector("a.naviOpen.naviOpenBtn > div > span")).click();
-    driver.findElement(By.id("aMenuLogin")).click();
-    driver.findElement(By.linkText("パスワードを忘れた方")).click();
-    driver.findElement(By.id("txtIboNumber")).clear();
-    driver.findElement(By.id("txtIboNumber")).sendKeys("5243017");
-    driver.findElement(By.id("txtPin")).clear();
-    driver.findElement(By.id("txtPin")).sendKeys("8300");
-    driver.findElement(By.cssSelector("#btnSetPassword > div")).click();
-    driver.findElement(By.cssSelector("img[alt=\"ヘルプ\"]")).click();
-  }
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
+	}
 
-  @After
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
-  }
-
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alert.getText();
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
+	private boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 }
