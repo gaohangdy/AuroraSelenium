@@ -25,11 +25,14 @@ public class D01004010 extends AuroraTestCase {
 				By.cssSelector("a.naviOpen.naviOpenBtn > div > span")).click();
 		driver.findElement(By.id("aMenuLogin")).click();
 		driver.findElement(By.linkText("パスワードを忘れた方")).click();
+		testUtil.createScreenShot(driver);
 		driver.findElement(By.id("txtIboNumber")).clear();
 		driver.findElement(By.id("txtIboNumber")).sendKeys("5243017");
 		driver.findElement(By.id("txtPin")).clear();
 		driver.findElement(By.id("txtPin")).sendKeys("1061");
+		testUtil.createScreenShot(driver);
 		driver.findElement(By.cssSelector("#btnSetPassword > div")).click();
+		testUtil.createScreenShot(driver);
 		assertEquals("ディストリビューター番号（お客様番号）または暗証番号が、正しく入力されておりません。\n(JWS5336E)",
 				closeAlertAndGetItsText());
 	}

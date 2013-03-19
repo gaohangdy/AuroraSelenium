@@ -24,11 +24,14 @@ public class D01003007 extends AuroraTestCase {
 				By.cssSelector("a.naviOpen.naviOpenBtn > div > span")).click();
 		driver.findElement(By.id("aMenuLogin")).click();
 		driver.findElement(By.linkText("パスワードを忘れた方")).click();
+		testUtil.createScreenShot(driver);
 		driver.findElement(By.id("txtIboNumber")).clear();
 		driver.findElement(By.id("txtIboNumber")).sendKeys("5243017");
 		driver.findElement(By.id("txtPin")).clear();
 		driver.findElement(By.id("txtPin")).sendKeys("8300");
+		testUtil.createScreenShot(driver);
 		driver.findElement(By.cssSelector("#btnSetPassword > div")).click();
+		testUtil.createScreenShot(driver);
 		driver.findElement(By.cssSelector("img[alt=\"ヘルプ\"]")).click();
 	}
 
