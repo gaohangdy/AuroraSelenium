@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/selenium-2.31.0"/>
+	<classpathentry kind="lib" path="C:/git/AuroraSelenium/AuroraSelenium/lib/jxl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
