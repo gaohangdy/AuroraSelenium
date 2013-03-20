@@ -43,13 +43,4 @@ public class D01003007 extends AuroraTestCase {
 			fail(verificationErrorString);
 		}
 	}
-
-	private boolean isElementPresent(By by) {
-		try {
-			driver.findElement(by);
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-	}
 }

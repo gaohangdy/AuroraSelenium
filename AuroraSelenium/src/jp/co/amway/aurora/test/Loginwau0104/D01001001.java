@@ -1,31 +1,21 @@
 package jp.co.amway.aurora.test.Loginwau0104;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-
 import jp.co.amway.aurora.test.util.AuroraTestCase;
-import junit.framework.TestCase;
 
 import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.android.AndroidDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class D01001001 extends AuroraTestCase {
-	private boolean acceptNextAlert = true;
-	private StringBuffer verificationErrors = new StringBuffer();
-
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		super.tearDown();
 	}
 
 	@Test
@@ -53,21 +43,4 @@ public class D01001001 extends AuroraTestCase {
 		testUtil.createScreenShot(driver);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		driver.quit();
-		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
-		}
-	}
-
-	private boolean isElementPresent(By by) {
-		try {
-			driver.findElement(by);
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-	}
 }
