@@ -10,11 +10,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
 import junit.framework.TestCase;
 
 public class AuroraTestCase extends TestCase {
@@ -28,25 +30,36 @@ public class AuroraTestCase extends TestCase {
 	public void setUp() throws Exception {
 		// Create folder for save screenshot
 		testUtil.createScreenShotFolder();
-		 //--Chrome
-		 DesiredCapabilities caps = DesiredCapabilities.chrome();
-		 caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-		
-		 driver = new ChromeDriver(caps);
-		 driver.manage().deleteAllCookies();
-		 baseUrl = "https://ipdev.amwaylive.com/";
-		 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// --Chrome
+		if ("2".equals(AuroraSeleniumConst.DRIVER_TYPE)) {
+			DesiredCapabilities caps = DesiredCapabilities.chrome();
+			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-//		// --Android
-//		DesiredCapabilities caps = DesiredCapabilities.android();
-//		caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-//
-//		driver = new AndroidDriver(caps);
-//		driver.manage().deleteAllCookies();
-//		baseUrl = "https://ipdev.amwaylive.com/";
-//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver = new ChromeDriver(caps);
+			driver.manage().deleteAllCookies();
+			baseUrl = "https://ipdev.amwaylive.com/";
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		} else if ("0".equals(AuroraSeleniumConst.DRIVER_TYPE)) {
+			// --Android
+			DesiredCapabilities caps = DesiredCapabilities.android();
+			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
+			driver = new AndroidDriver(caps);
+			driver.manage().deleteAllCookies();
+			baseUrl = "https://ipdev.amwaylive.com/";
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		} else if ("1".equals(AuroraSeleniumConst.DRIVER_TYPE)) {
+			// --Firefox
+			DesiredCapabilities caps = DesiredCapabilities.firefox();
+			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
+			driver = new FirefoxDriver(caps);
+			driver.manage().deleteAllCookies();
+			baseUrl = "https://ipdev.amwaylive.com/";
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		}
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 		driver.quit();
@@ -54,9 +67,9 @@ public class AuroraTestCase extends TestCase {
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
 		}
-	}	
+	}
 
-	protected String closeAlertAndGetItsText() {	
+	protected String closeAlertAndGetItsText() {
 		try {
 			(new WebDriverWait(driver, 10)).until(ExpectedConditions
 					.alertIsPresent());
@@ -80,5 +93,5 @@ public class AuroraTestCase extends TestCase {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
-	}	
+	}
 }

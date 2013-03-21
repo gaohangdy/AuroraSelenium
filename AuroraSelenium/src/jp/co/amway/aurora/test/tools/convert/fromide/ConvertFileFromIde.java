@@ -17,10 +17,11 @@ import org.apache.commons.io.FileUtils;
 
 import jp.co.amway.aurora.test.bean.TestCaseClassInfo;
 import jp.co.amway.aurora.test.bean.TestSuiteInfo;
+import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
 import jp.co.amway.aurora.test.util.FileOperateUtil;
 
 public class ConvertFileFromIde {
-	public static final boolean CONVERT_TO_SOURCE_DIR = true;
+//	public static final boolean CONVERT_TO_SOURCE_DIR = true;
 
 	/**
 	 * @param args
@@ -160,7 +161,7 @@ public class ConvertFileFromIde {
 			BufferedWriter outobj = new BufferedWriter(fstream);
 			outobj.write(sbTestCase.toString());
 			outobj.close();
-			if (CONVERT_TO_SOURCE_DIR) {
+			if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
 				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
 						+ testCaseClassInfo.getClassName() + ".java"));
 			}
@@ -173,7 +174,7 @@ public class ConvertFileFromIde {
 			TestCaseClassInfo testCaseClassInfo) {
 		String path = "";
 		String sourcePath = "";
-		if (CONVERT_TO_SOURCE_DIR) {
+		if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
 			path = System.getProperty("user.dir") + "/src/"
 					+ testCaseClassInfo.getPackageName().replace(".", "/");
 			if (!new File(path).exists()) {
