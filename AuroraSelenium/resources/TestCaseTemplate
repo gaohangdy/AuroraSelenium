@@ -1,0 +1,22 @@
+package :PACKAGE;
+
+import jp.co.amway.aurora.test.util.AuroraTestCase;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class :CLASS extends AuroraTestCase {
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	:TESTCASE
+}
