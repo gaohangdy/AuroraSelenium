@@ -23,19 +23,19 @@ public class FileOperateUtil {
 		String[] fns = file.list(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
-				File subFile = new File(dir + "\\" + name);
+				File subFile = new File(dir + "/" + name);
 				if (subFile.isDirectory()) {
-					if (new File(subFile.getPath() + "\\" + "JAVA_CONV")
+					if (new File(subFile.getPath() + "/" + "JAVA_CONV")
 							.exists()) {
 						System.out.println("Converted TestSuite:"
 								+ subFile.getPath());
 						return false;
-					} else if (!new File(subFile.getPath() + "\\" + "JAVA_EXP")
+					} else if (!new File(subFile.getPath() + "/" + "JAVA_EXP")
 							.exists()) {
 						System.out.println("No Export Java TestSuite:"
 								+ subFile.getPath());
 						return false;
-					} else if (!new File(subFile.getPath() + "\\" + "JAVA_CONV")
+					} else if (!new File(subFile.getPath() + "/" + "JAVA_CONV")
 							.exists()) {
 						return true;
 					}
@@ -44,8 +44,11 @@ public class FileOperateUtil {
 				return false;
 			}
 		});
-		for (String fnsItem : fns) {
-			lstTestSuite.add(path + "\\" + fnsItem);
+		if (fns != null) {
+
+			for (String fnsItem : fns) {
+				lstTestSuite.add(path + "/" + fnsItem);
+			}
 		}
 		return lstTestSuite;
 	}
@@ -58,7 +61,7 @@ public class FileOperateUtil {
 
 			@Override
 			public boolean accept(File dir, String name) {
-				File subFile = new File(dir + "\\" + name);
+				File subFile = new File(dir + "/" + name);
 				if (subFile.isFile()) {
 					boolean blnMatch = false;
 					for (String item : aryPrefix) {
@@ -68,15 +71,19 @@ public class FileOperateUtil {
 					}
 					return blnMatch;
 				} else if (subFile.isDirectory()) {
-					getFileList(dir + "\\" + name, prefix, lstFile);
+					getFileList(dir + "/" + name, prefix, lstFile);
 					return false;
 				} else {
 					return false;
 				}
 			}
 		});
+		if (fns == null) {
+			System.out.println("Not convert files in folder");
+			return;
+		}
 		for (String fnsItem : fns) {
-			lstFile.add(path + "\\" + fnsItem);
+			lstFile.add(path + "/" + fnsItem);
 		}
 	}
 

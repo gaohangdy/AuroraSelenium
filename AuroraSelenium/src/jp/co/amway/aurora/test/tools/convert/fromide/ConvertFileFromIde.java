@@ -31,14 +31,14 @@ public class ConvertFileFromIde {
 
 	public static void convertExportSource() {
 		String path = System.getProperty("user.dir")
-				+ "\\resources\\TestCase_Convert";
+				+ "/resources/TestCase_Convert";
 		List<String> lstTestSuite = FileOperateUtil.getFileByTestSuite(path);
 		for (String suitePath : lstTestSuite) {
 			List<String> lstTestCase = new ArrayList<String>();
-			FileOperateUtil.getFileList(suitePath + "\\" + "JAVA_EXP", "JAVA",
+			FileOperateUtil.getFileList(suitePath + "/" + "JAVA_EXP", "JAVA",
 					lstTestCase);
 			TestSuiteInfo testSuiteInfo = fetchTestSuite(lstTestCase, suitePath
-					+ "\\" + "JAVA_EXP");
+					+ "/" + "JAVA_EXP");
 
 			for (TestCaseClassInfo testCaseClass : testSuiteInfo
 					.getLstTestCase()) {
@@ -88,7 +88,7 @@ public class ConvertFileFromIde {
 									.setPackageName("jp.co.amway.aurora.test."
 											+ testSuiteInfo.getSuiteName()
 													.toLowerCase());
-							testCaseClassInfo.setFilePath(folder + "\\"
+							testCaseClassInfo.setFilePath(folder + "/"
 									+ testCaseClassInfo.getClassName()
 									+ ".java");
 							testSuiteInfo.getLstTestCase().add(
@@ -110,7 +110,7 @@ public class ConvertFileFromIde {
 
 	public static void writeConvertJavaFile(TestCaseClassInfo testCaseClassInfo) {
 		String path = System.getProperty("user.dir")
-				+ "\\resources\\TestCaseTemplate";
+				+ "/resources/TestCaseTemplate";
 		StringBuilder sbTestCase = new StringBuilder();
 		try {
 			String encoding = "";
@@ -161,7 +161,7 @@ public class ConvertFileFromIde {
 			outobj.write(sbTestCase.toString());
 			outobj.close();
 			if (CONVERT_TO_SOURCE_DIR) {
-				FileUtils.copyFile(fConvert, new File(sourcePath + "\\"
+				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
 						+ testCaseClassInfo.getClassName() + ".java"));
 			}
 		} catch (IOException ex) {
@@ -174,8 +174,8 @@ public class ConvertFileFromIde {
 		String path = "";
 		String sourcePath = "";
 		if (CONVERT_TO_SOURCE_DIR) {
-			path = System.getProperty("user.dir") + "\\src\\"
-					+ testCaseClassInfo.getPackageName().replace(".", "\\");
+			path = System.getProperty("user.dir") + "/src/"
+					+ testCaseClassInfo.getPackageName().replace(".", "/");
 			if (!new File(path).exists()) {
 				new File(path).mkdir();
 			}
