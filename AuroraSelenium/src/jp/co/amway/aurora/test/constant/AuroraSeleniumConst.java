@@ -6,6 +6,8 @@ public class AuroraSeleniumConst {
 	public static final String DRIVER_TYPE = getResourceBundle().getString("driver");
 	public static final boolean CONVERT_TO_SOURCE_DIR = "1".equals(getResourceBundle().getString("createtosource")) ? true: false;
 
+        public static final String[] WEBELEMENT_ACTION = {"click","submit", "sendKeys", "clear"};
+        public static final String[] SELECT_ACTION ={"selectByVisibleText","selectByIndex","selectByValue","deselectAll","deselectByValue","deselectByIndex","deselectByVisibleText","setSelected"};
 	public static ResourceBundle getResourceBundle() {
 		String path = "AuroraAutomatic";
 		ResourceBundle resource = ResourceBundle.getBundle(path);

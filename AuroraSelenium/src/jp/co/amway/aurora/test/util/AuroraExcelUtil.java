@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.co.amway.aurora.test.bean.TestCaseInfo;
+import jp.co.amway.aurora.test.bean.TestActionInfo;
 import jxl.CellType;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -42,8 +42,8 @@ public class AuroraExcelUtil {
 		}
 	}
 	
-	public static List<TestCaseInfo> readTestCaseInfoList() {
-		List<TestCaseInfo> lstTestCaseInfo = new ArrayList<TestCaseInfo>();
+	public static List<TestActionInfo> readTestCaseInfoList() {
+		List<TestActionInfo> lstTestCaseInfo = new ArrayList<TestActionInfo>();
 		
 		return lstTestCaseInfo;
 	}
