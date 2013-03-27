@@ -1,5 +1,7 @@
 package jp.co.amway.aurora.test.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -16,7 +18,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import jp.co.amway.aurora.test.bean.TestActionInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
+import jp.co.amway.aurora.test.tools.convert.parser.ReadTestCaseXls;
 import junit.framework.TestCase;
 
 public class AuroraTestCase extends TestCase {
@@ -25,9 +29,12 @@ public class AuroraTestCase extends TestCase {
 	protected String baseUrl;
 	protected boolean acceptNextAlert = true;
 	protected StringBuffer verificationErrors = new StringBuffer();
+	private List<TestActionInfo> testActionList = new ArrayList<TestActionInfo>();
 
 	@Before
 	public void setUp() throws Exception {
+		String path = getTestDoc();
+		testActionList = new ReadTestCaseXls(path).getTestActionList();
 		// Create folder for save screenshot
 		testUtil.createScreenShotFolder();
 		// --Chrome
@@ -93,5 +100,37 @@ public class AuroraTestCase extends TestCase {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+	
+	private String getTestDoc() {
+		String className = new Throwable().getStackTrace()[2].getClassName();
+		String packageName = "";
+		try {
+			packageName = Class.forName(className).getPackage().getName();
+
+			packageName = packageName.split("\\.")[packageName.split("\\.").length - 1];
+			className = className.split("\\.")[className.split("\\.").length - 1];
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String path = FileOperateUtil.fetchTestSuiteFolder(packageName);
+		if ("".equals(path)) {
+			System.out.println("Can't find testcase document in folder[" + path + "]");
+		} else {
+			path = path + "/DOC/" + className + ".xls";
+		}
+		return path;		
+	}
+
+	protected String getTestValue(String param, String action) {
+		for (TestActionInfo testAction : testActionList) {
+			String cmpTxt = "By." + testAction.getBy() + "(" + testAction.getElement() + ")";
+			if (cmpTxt.equals(param) && testAction.getAction().equals(action)) {
+				return testAction.getValue();
+			}
+		}
+		return "";
 	}
 }

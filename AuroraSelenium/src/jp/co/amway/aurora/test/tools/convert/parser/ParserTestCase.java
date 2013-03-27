@@ -13,10 +13,15 @@ import japa.parser.ast.body.TypeDeclaration;
 import japa.parser.ast.expr.Expression;
 import japa.parser.ast.expr.MethodCallExpr;
 import japa.parser.ast.expr.NameExpr;
+import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
+
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +36,27 @@ import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
  */
 public class ParserTestCase {
 
-    private List<TestActionInfo> lstTestCaseAction;
+    private List<TestActionInfo> lstTestCaseAction = new ArrayList<TestActionInfo>();
     private String filePath;
     private CompilationUnit cu;
+    private List<TestActionInfo> lstFromXls = new ArrayList<TestActionInfo>();
 
     public ParserTestCase(String filePath) {
         this.filePath = filePath;
     }
+    
+    public ParserTestCase(String filePath, List<TestActionInfo> lstFromXls) {
+    	this.filePath = filePath;
+    	this.lstFromXls = lstFromXls;
+    }
 
     public List<TestActionInfo> getLstTestCaseAction() {
-        ParserTestActions();
+        try {
+			ParserTestActions();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return lstTestCaseAction;
     }
 
@@ -56,7 +72,7 @@ public class ParserTestCase {
         }
     }
 
-    private void ParserTestActions() {
+    private void ParserTestActions() throws IOException {
         try {
             loadJavaFile();
         } catch (FileNotFoundException ex) {
@@ -78,7 +94,7 @@ public class ParserTestCase {
                             System.out.println("Find TestCase Method!");
                             MethodDeclaration method = (MethodDeclaration) member;
                             List<Statement> lstStatement = method.getBody().getStmts();
-
+                            
                             for (Statement stat : lstStatement) {
                                 ExpressionStmt eStat = (ExpressionStmt) stat;
                                 MethodCallExpr expr = (MethodCallExpr) eStat.getExpression();
@@ -93,13 +109,13 @@ public class ParserTestCase {
                             }
                         }
                     }
-
-//                    ASTHelper.addArgument(call, new StringLiteralExpr("Hello World!"));
+                    
                     MethodDeclaration method = (MethodDeclaration) member;
-//                    changeMethod(method);
                 }
             }
         }
+        
+        refactJavaFile(cu.toString(), filePath);
     }
 
     private void checkAction(TestActionInfo testActionInfo, MethodCallExpr methodCallExpr) {
@@ -161,8 +177,32 @@ public class ParserTestCase {
             }
         } else if (methodCallExpr.getScope() instanceof MethodCallExpr) {
             System.out.println(methodCallExpr.getName());
+            
             checkAction(testActionInfo, methodCallExpr);
             fetchByStatement((MethodCallExpr) methodCallExpr.getScope(), testActionInfo);
+            
+            if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
+            	MethodCallExpr tmpMdExpr = new MethodCallExpr();
+            	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
+            	tmpMdExpr.setName("getTestValue");
+            	tmpSExpr.setValue(((MethodCallExpr)methodCallExpr.getScope()).getArgs().get(0).toString().replace("\"", "\\\""));
+            	List<Expression> lstArgs = new ArrayList<Expression>();
+            	lstArgs.add(tmpSExpr);
+            	StringLiteralExpr tmpActionSExpr = new StringLiteralExpr();
+            	tmpActionSExpr.setValue(methodCallExpr.getName());
+            	lstArgs.add(tmpActionSExpr);
+            	tmpMdExpr.setArgs(lstArgs);
+            	
+            	methodCallExpr.getArgs().set(0, tmpMdExpr);
+            }            
         }
     }
+	
+	private void refactJavaFile(String source, String path) throws IOException {
+		File fConvert = new File(path);
+		FileWriter fstream = new FileWriter(fConvert);
+		BufferedWriter outobj = new BufferedWriter(fstream);
+		outobj.write(source);
+		outobj.close();
+	}
 }

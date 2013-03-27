@@ -18,7 +18,9 @@ import org.apache.commons.io.FileUtils;
 import jp.co.amway.aurora.test.bean.TestCaseClassInfo;
 import jp.co.amway.aurora.test.bean.TestSuiteInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
+import jp.co.amway.aurora.test.tools.convert.parser.WriteTestCaseXls;
 import jp.co.amway.aurora.test.util.FileOperateUtil;
+import jxl.write.WriteException;
 
 public class ConvertFileFromIde {
 //	public static final boolean CONVERT_TO_SOURCE_DIR = true;
@@ -44,7 +46,18 @@ public class ConvertFileFromIde {
 			for (TestCaseClassInfo testCaseClass : testSuiteInfo
 					.getLstTestCase()) {
 				readExportJavaSource(testCaseClass);
-				writeConvertJavaFile(testCaseClass);
+				String convertedFilePath = writeConvertJavaFile(testCaseClass);
+				WriteTestCaseXls writeTestCaseXls = new WriteTestCaseXls(suitePath, convertedFilePath,testSuiteInfo.getSuiteName(),testCaseClass.getClassName());
+				
+				try {
+					writeTestCaseXls.writeExcelFile(testCaseClass.getClassName());
+				} catch (WriteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -109,7 +122,7 @@ public class ConvertFileFromIde {
 		return testSuiteInfo;
 	}
 
-	public static void writeConvertJavaFile(TestCaseClassInfo testCaseClassInfo) {
+	public static String writeConvertJavaFile(TestCaseClassInfo testCaseClassInfo) {
 		String path = System.getProperty("user.dir")
 				+ "/resources/TestCaseTemplate";
 		StringBuilder sbTestCase = new StringBuilder();
@@ -145,15 +158,6 @@ public class ConvertFileFromIde {
 			}
 			br.close();
 
-			// if (!new
-			// File(testCaseClassInfo.getFilePath().replace(testCaseClassInfo.getClassName()
-			// + ".java", "").toUpperCase().replace("JAVA_EXP",
-			// "JAVA_CONV")).exists()) {
-			// new
-			// File(testCaseClassInfo.getFilePath().replace(testCaseClassInfo.getClassName()
-			// + ".java", "").toUpperCase().replace("JAVA_EXP",
-			// "JAVA_CONV")).mkdir();
-			// }
 			String sourcePath = createConvertSourceFolder(testCaseClassInfo);
 			File fConvert = new File(testCaseClassInfo.getFilePath().replace(
 					"JAVA_EXP", "JAVA_CONV"));
@@ -165,9 +169,11 @@ public class ConvertFileFromIde {
 				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
 						+ testCaseClassInfo.getClassName() + ".java"));
 			}
+                        return fConvert.getPath();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
+                return "";
 	}
 
 	private static String createConvertSourceFolder(

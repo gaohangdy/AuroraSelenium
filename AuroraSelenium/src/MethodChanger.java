@@ -13,7 +13,12 @@ import japa.parser.ast.expr.NameExpr;
 import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
+
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.amway.aurora.test.bean.TestActionInfo;
@@ -29,7 +34,7 @@ import org.openqa.selenium.WebElement;
  * @author epe2
  */
 public class MethodChanger {
-
+	private static final List<TestActionInfo> lstTestCaseAction = new ArrayList<TestActionInfo>();
     public static void main(String[] args) throws Exception {
         // creates an input stream for the file to be parsed
         FileInputStream in = new FileInputStream(System.getProperty("user.dir") + "/D01001001.java");
@@ -44,13 +49,28 @@ public class MethodChanger {
 
         // change the methods names and parameters
         changeMethods(cu);
+        refactJavaFile(cu.toString(), System.getProperty("user.dir") + "/D01001001.java");
+        formatTestStatement(cu);
 
         // prints the changed compilation unit
         System.out.println(cu.toString());
     }
+    
+    private static void formatTestStatement(CompilationUnit cu) {
+        List<TypeDeclaration> types = cu.getTypes();
+
+        for (TypeDeclaration type : types) {
+            List<BodyDeclaration> members = type.getMembers();
+            for (BodyDeclaration member : members) {
+                if (member instanceof MethodDeclaration && member.getAnnotations()!= null && "Test".equals(member.getAnnotations().get(0).getName().getName())) {
+                	System.out.println("aaa");
+                }
+            }
+        }
+    }
 
     private static void changeMethods(CompilationUnit cu) {
-        List<TestActionInfo> lstTestCaseAction = new ArrayList<TestActionInfo>();
+        
         List<TypeDeclaration> types = cu.getTypes();
 
         for (TypeDeclaration type : types) {
@@ -146,6 +166,22 @@ public class MethodChanger {
             }
         } else if (methodCallExpr.getScope() instanceof MethodCallExpr) {
             System.out.println(methodCallExpr.getName());
+            if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
+            	MethodCallExpr tmpMdExpr = new MethodCallExpr();
+            	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
+            	tmpMdExpr.setName("getTestValue");
+            	tmpSExpr.setValue(((MethodCallExpr)methodCallExpr.getScope()).getArgs().get(0).toString().replace("\"", "\\\""));
+            	List<Expression> lstArgs = new ArrayList<Expression>();
+            	lstArgs.add(tmpSExpr);
+            	StringLiteralExpr tmpActionSExpr = new StringLiteralExpr();
+            	tmpActionSExpr.setValue(methodCallExpr.getName());
+            	lstArgs.add(tmpActionSExpr);
+            	tmpMdExpr.setArgs(lstArgs);
+            	
+            	methodCallExpr.getArgs().set(0, tmpMdExpr);
+            }
+            
+            
             checkAction(testActionInfo, methodCallExpr);
             fetchByStatement((MethodCallExpr) methodCallExpr.getScope(), testActionInfo);
         }
@@ -168,4 +204,13 @@ public class MethodChanger {
         // add the parameter to the method
         ASTHelper.addParameter(n, newArg);
     }
+    
+	
+	private static void refactJavaFile(String source, String path) throws IOException {
+		File fConvert = new File(path);
+		FileWriter fstream = new FileWriter(fConvert);
+		BufferedWriter outobj = new BufferedWriter(fstream);
+		outobj.write(source);
+		outobj.close();
+	}
 }

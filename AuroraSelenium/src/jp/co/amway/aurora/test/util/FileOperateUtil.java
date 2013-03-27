@@ -147,4 +147,18 @@ public class FileOperateUtil {
 			System.out.println(ex.getMessage());
 		}
 	}
+	
+	public static String fetchTestSuiteFolder(String testSuiteName) {
+		String path = System.getProperty("user.dir")
+				+ "/resources/TestCase_Convert";
+		File file = new File(path);
+		
+		for (String subFolder: file.list()) {
+			if (testSuiteName.equals(subFolder.replace("-", "").toLowerCase())) {
+				return path + "/" + subFolder;
+			}
+		}
+		
+		return "";
+	}
 }
