@@ -62,6 +62,8 @@ public class ReadTestCaseXls {
 			} else {
 				testActionInfo.setScreenShot(false);
 			}
+			
+			testActionInfo.setComment(rs.getCell(6, intStep).getContents());
 			testActionList.add(testActionInfo);
 			intStep++;
 		}

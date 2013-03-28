@@ -7,8 +7,26 @@ public class TestActionInfo {
     private String action;
     private String value;
     private boolean screenShot;
+    private String comment;
+    private boolean status;
     
-    public TestActionInfo() {
+    public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public TestActionInfo() {
         by = "";
     }
 

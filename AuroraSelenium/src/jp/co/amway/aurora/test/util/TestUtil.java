@@ -38,14 +38,15 @@ public class TestUtil {
 	}
 
 	// Create folder for save screen shot file.
-	public void createScreenShotFolder() throws ClassNotFoundException {
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		// String path = SCREENSHOT_PATH + "\\" + sdf.format(new Date());
-		String className = new Throwable().getStackTrace()[2].getClassName();		
-		String packageName = Class.forName(className).getPackage().getName();
-		packageName = packageName.split("\\.")[packageName.split("\\.").length - 1];
+	public void createScreenShotFolder(String basePath)
+			throws ClassNotFoundException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String className = new Throwable().getStackTrace()[2].getClassName();
 		className = className.split("\\.")[className.split("\\.").length - 1];
-		String path = SCREENSHOT_PATH + "\\" + packageName + "\\" + className + "\\";
+		// String path = SCREENSHOT_PATH + "/" + packageName + "/" + className +
+		// "/";
+		String path = basePath + "/SCREENSHOT/" + className + "/"
+				+ sdf.format(new Date()) + "/";
 		File f = new File(path);
 		if (!f.exists()) {
 			f.mkdir();
@@ -60,7 +61,7 @@ public class TestUtil {
 			InterruptedException {
 		Thread.sleep(3000);
 		if (!"".equals(testCaseName) && testCaseName != null) {
-			if ((new Throwable().getStackTrace()[1].getMethodName())
+			if ((new Throwable().getStackTrace()[3].getMethodName())
 					.equals(testCaseName)) {
 				screenShotSeq++;
 			} else {
@@ -69,11 +70,11 @@ public class TestUtil {
 				screenShotSeq = 1;
 			}
 		} else {
-			testCaseName = new Throwable().getStackTrace()[1].getMethodName();
+			testCaseName = new Throwable().getStackTrace()[3].getMethodName();
 		}
 		File scrFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(this.screenShotPath + "\\"
+		FileUtils.copyFile(scrFile, new File(this.screenShotPath + "/"
 				+ testCaseName + "_" + String.format("%03d", screenShotSeq)
 				+ ".png"));
 	}
@@ -81,7 +82,7 @@ public class TestUtil {
 	public void createScreenShotDialog(WebDriver driver) throws IOException,
 			InterruptedException {
 		Thread.sleep(3000);
-		
+
 		if (!"".equals(testCaseName) && testCaseName != null) {
 			if ((new Throwable().getStackTrace()[1].getMethodName())
 					.equals(testCaseName)) {
@@ -94,7 +95,7 @@ public class TestUtil {
 		} else {
 			testCaseName = new Throwable().getStackTrace()[1].getMethodName();
 		}
-		
+
 		Robot objRobot = null;
 		try {
 			objRobot = new Robot();
@@ -121,7 +122,7 @@ public class TestUtil {
 		// Cleanup after ourselves
 		imageGraphics.dispose();
 
-		String outputPath = this.screenShotPath + "\\" + testCaseName + "_"
+		String outputPath = this.screenShotPath + "/" + testCaseName + "_"
 				+ String.format("%03d", screenShotSeq) + ".png";
 		// Setup to write the BufferedImage to a file
 		File outputFile = new File(outputPath);

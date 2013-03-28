@@ -13,6 +13,7 @@ import japa.parser.ast.body.TypeDeclaration;
 import japa.parser.ast.expr.Expression;
 import japa.parser.ast.expr.MethodCallExpr;
 import japa.parser.ast.expr.NameExpr;
+import japa.parser.ast.expr.ObjectCreationExpr;
 import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
@@ -177,10 +178,10 @@ public class ParserTestCase {
             }
         } else if (methodCallExpr.getScope() instanceof MethodCallExpr) {
             System.out.println(methodCallExpr.getName());
-            
             checkAction(testActionInfo, methodCallExpr);
             fetchByStatement((MethodCallExpr) methodCallExpr.getScope(), testActionInfo);
-            
+            //Replace driver.findElement() to AuroraTestCase.findElement()
+            ((MethodCallExpr)methodCallExpr.getScope()).setScope(null);
             if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
             	MethodCallExpr tmpMdExpr = new MethodCallExpr();
             	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
@@ -195,6 +196,30 @@ public class ParserTestCase {
             	
             	methodCallExpr.getArgs().set(0, tmpMdExpr);
             }            
+        } else if (methodCallExpr.getScope() instanceof ObjectCreationExpr) {
+        	System.out.println(methodCallExpr.getName());
+            if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
+            	MethodCallExpr tmpMdExpr = new MethodCallExpr();
+            	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
+            	tmpMdExpr.setName("getTestValue");
+            	
+            	MethodCallExpr elementMdExpr = (MethodCallExpr)((ObjectCreationExpr)methodCallExpr.getScope()).getArgs().get(0);
+            	//Replace driver.findElement() to AuroraTestCase.findElement()
+            	elementMdExpr.setScope(null);
+            	tmpSExpr.setValue(elementMdExpr.getArgs().get(0).toString().replace("\"", "\\\""));
+            	List<Expression> lstArgs = new ArrayList<Expression>();
+            	lstArgs.add(tmpSExpr);
+            	StringLiteralExpr tmpActionSExpr = new StringLiteralExpr();
+            	tmpActionSExpr.setValue(methodCallExpr.getName());
+            	lstArgs.add(tmpActionSExpr);
+            	tmpMdExpr.setArgs(lstArgs);
+            	
+            	methodCallExpr.getArgs().set(0, tmpMdExpr);
+            }
+            
+            
+            checkAction(testActionInfo, methodCallExpr);
+            fetchByStatement((MethodCallExpr)((ObjectCreationExpr) methodCallExpr.getScope()).getArgs().get(0), testActionInfo);
         }
     }
 	

@@ -10,6 +10,7 @@ import japa.parser.ast.expr.BinaryExpr;
 import japa.parser.ast.expr.Expression;
 import japa.parser.ast.expr.MethodCallExpr;
 import japa.parser.ast.expr.NameExpr;
+import japa.parser.ast.expr.ObjectCreationExpr;
 import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
@@ -37,7 +38,7 @@ public class MethodChanger {
 	private static final List<TestActionInfo> lstTestCaseAction = new ArrayList<TestActionInfo>();
     public static void main(String[] args) throws Exception {
         // creates an input stream for the file to be parsed
-        FileInputStream in = new FileInputStream(System.getProperty("user.dir") + "/D01001001.java");
+        FileInputStream in = new FileInputStream(System.getProperty("user.dir") + "/D01001002.java");
 
         CompilationUnit cu;
         try {
@@ -49,7 +50,7 @@ public class MethodChanger {
 
         // change the methods names and parameters
         changeMethods(cu);
-        refactJavaFile(cu.toString(), System.getProperty("user.dir") + "/D01001001.java");
+        refactJavaFile(cu.toString(), System.getProperty("user.dir") + "/D01001002.java");
         formatTestStatement(cu);
 
         // prints the changed compilation unit
@@ -184,6 +185,30 @@ public class MethodChanger {
             
             checkAction(testActionInfo, methodCallExpr);
             fetchByStatement((MethodCallExpr) methodCallExpr.getScope(), testActionInfo);
+        } else if (methodCallExpr.getScope() instanceof ObjectCreationExpr) {
+        	System.out.println(methodCallExpr.getName());
+            if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
+            	MethodCallExpr tmpMdExpr = new MethodCallExpr();
+            	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
+            	tmpMdExpr.setName("getTestValue");
+            	
+            	MethodCallExpr elementMdExpr = (MethodCallExpr)((ObjectCreationExpr)methodCallExpr.getScope()).getArgs().get(0);
+            	//Replace driver.findElement() to AuroraTestCase.findElement()
+            	elementMdExpr.setScope(null);
+            	tmpSExpr.setValue(elementMdExpr.getArgs().get(0).toString().replace("\"", "\\\""));
+            	List<Expression> lstArgs = new ArrayList<Expression>();
+            	lstArgs.add(tmpSExpr);
+            	StringLiteralExpr tmpActionSExpr = new StringLiteralExpr();
+            	tmpActionSExpr.setValue(methodCallExpr.getName());
+            	lstArgs.add(tmpActionSExpr);
+            	tmpMdExpr.setArgs(lstArgs);
+            	
+            	methodCallExpr.getArgs().set(0, tmpMdExpr);
+            }
+            
+            
+            checkAction(testActionInfo, methodCallExpr);
+            fetchByStatement((MethodCallExpr)((ObjectCreationExpr) methodCallExpr.getScope()).getArgs().get(0), testActionInfo);
         }
     }
 
