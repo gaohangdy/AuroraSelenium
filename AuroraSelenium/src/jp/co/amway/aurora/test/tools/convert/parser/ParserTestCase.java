@@ -17,6 +17,7 @@ import japa.parser.ast.expr.ObjectCreationExpr;
 import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
+import japa.parser.ast.type.ClassOrInterfaceType;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -198,12 +199,22 @@ public class ParserTestCase {
             }            
         } else if (methodCallExpr.getScope() instanceof ObjectCreationExpr) {
         	System.out.println(methodCallExpr.getName());
+        	checkAction(testActionInfo, methodCallExpr);
             if (methodCallExpr.getArgs() != null && !methodCallExpr.getArgs().isEmpty()) {
             	MethodCallExpr tmpMdExpr = new MethodCallExpr();
             	StringLiteralExpr tmpSExpr = new StringLiteralExpr();
             	tmpMdExpr.setName("getTestValue");
             	
             	MethodCallExpr elementMdExpr = (MethodCallExpr)((ObjectCreationExpr)methodCallExpr.getScope()).getArgs().get(0);
+            	ObjectCreationExpr objCExpr =(ObjectCreationExpr)methodCallExpr.getScope();
+            	ClassOrInterfaceType type = new ClassOrInterfaceType();
+            	type.setName("AuroraSelect");
+            	objCExpr.setType(type);
+            	//Add AuroraSelect create second parameter
+            	NameExpr secSExpr = new NameExpr();
+            	secSExpr.setName("this.testActionList");
+            	objCExpr.getArgs().add(secSExpr);
+            	
             	//Replace driver.findElement() to AuroraTestCase.findElement()
             	elementMdExpr.setScope(null);
             	tmpSExpr.setValue(elementMdExpr.getArgs().get(0).toString().replace("\"", "\\\""));
@@ -215,11 +226,17 @@ public class ParserTestCase {
             	tmpMdExpr.setArgs(lstArgs);
             	
             	methodCallExpr.getArgs().set(0, tmpMdExpr);
+            	objCExpr.getArgs().add(tmpSExpr);
             }
-            
-            
-            checkAction(testActionInfo, methodCallExpr);
+       
             fetchByStatement((MethodCallExpr)((ObjectCreationExpr) methodCallExpr.getScope()).getArgs().get(0), testActionInfo);
+        } else if (methodCallExpr.getScope() == null) {
+        	if (methodCallExpr.getArgs().get(0) instanceof MethodCallExpr) {
+        		MethodCallExpr byExpr = (MethodCallExpr)methodCallExpr.getArgs().get(0);
+        		StringLiteralExpr byArg = (StringLiteralExpr) byExpr.getArgs().get(0);
+        		testActionInfo.setBy(byExpr.getName());
+        		testActionInfo.setElement("\"" + byArg.getValue() + "\"");
+        	}
         }
     }
 	

@@ -14,6 +14,7 @@ import japa.parser.ast.expr.ObjectCreationExpr;
 import japa.parser.ast.expr.StringLiteralExpr;
 import japa.parser.ast.stmt.ExpressionStmt;
 import japa.parser.ast.stmt.Statement;
+import japa.parser.ast.type.ClassOrInterfaceType;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import jp.co.amway.aurora.test.bean.TestActionInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
+import jp.co.amway.aurora.test.util.AuroraSelect;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /*
@@ -193,6 +197,15 @@ public class MethodChanger {
             	tmpMdExpr.setName("getTestValue");
             	
             	MethodCallExpr elementMdExpr = (MethodCallExpr)((ObjectCreationExpr)methodCallExpr.getScope()).getArgs().get(0);
+            	ObjectCreationExpr objCExpr =(ObjectCreationExpr)methodCallExpr.getScope();
+            	ClassOrInterfaceType type = new ClassOrInterfaceType();
+            	type.setName("AuroraSelect");
+            	objCExpr.setType(type);
+            	//Add AuroraSelect create second parameter
+            	NameExpr secSExpr = new NameExpr();
+            	secSExpr.setName("this.testActionList");
+            	objCExpr.getArgs().add(secSExpr);
+            	
             	//Replace driver.findElement() to AuroraTestCase.findElement()
             	elementMdExpr.setScope(null);
             	tmpSExpr.setValue(elementMdExpr.getArgs().get(0).toString().replace("\"", "\\\""));
@@ -209,6 +222,13 @@ public class MethodChanger {
             
             checkAction(testActionInfo, methodCallExpr);
             fetchByStatement((MethodCallExpr)((ObjectCreationExpr) methodCallExpr.getScope()).getArgs().get(0), testActionInfo);
+        } else if (methodCallExpr.getScope() == null) {
+        	if (methodCallExpr.getArgs().get(0) instanceof MethodCallExpr) {
+        		MethodCallExpr byExpr = (MethodCallExpr)methodCallExpr.getArgs().get(0);
+        		StringLiteralExpr byArg = (StringLiteralExpr) byExpr.getArgs().get(0);
+        		testActionInfo.setBy(byExpr.getName());
+        		testActionInfo.setElement("\"" + byArg.getValue() + "\"");
+        	}
         }
     }
 

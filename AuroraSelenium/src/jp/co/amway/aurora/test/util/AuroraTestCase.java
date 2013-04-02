@@ -19,6 +19,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import jp.co.amway.aurora.test.bean.TestActionInfo;
@@ -32,7 +33,7 @@ public class AuroraTestCase extends TestCase {
 	protected String baseUrl;
 	protected boolean acceptNextAlert = true;
 	protected StringBuffer verificationErrors = new StringBuffer();
-	private List<TestActionInfo> testActionList = new ArrayList<TestActionInfo>();
+	protected List<TestActionInfo> testActionList = new ArrayList<TestActionInfo>();
 
 	@Before
 	public void setUp() throws Exception {
@@ -151,6 +152,7 @@ public class AuroraTestCase extends TestCase {
 
 	protected String getTestValue(String param, String action) {
 		for (TestActionInfo testAction : testActionList) {
+			System.out.println(testAction.getElement());
 			String cmpTxt = "By." + testAction.getBy() + "("
 					+ testAction.getElement() + ")";
 			if (cmpTxt.equals(param) && testAction.getAction().equals(action)) {
@@ -187,5 +189,15 @@ public class AuroraTestCase extends TestCase {
 //		(new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")))).click();
 //		return null;
 		
+	}
+	
+	protected Select select(WebElement element) {
+		Select sel = new Select(element);
+		AuroraSelectHandler handler = new AuroraSelectHandler(sel, driver, testActionList, testUtil);
+        Select proxy = (Select)Proxy.newProxyInstance(   
+        		sel.getClass().getClassLoader(),    
+        		sel.getClass().getInterfaces(),    
+                handler);   
+           return proxy;
 	}
 }
