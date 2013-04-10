@@ -32,19 +32,21 @@ public class WriteTestCaseXls {
 	private String javaFilePath;
 	private String testSuiteName;
 	private String testCaseName;
+	private String testPackageName;
 
 	public WriteTestCaseXls(String testSuitePath, String javaFilePath,
-			String testSuiteName, String testCaseName) {
+			String testSuiteName, String testCaseName, String testPackageName) {
 		this.testSuitePath = testSuitePath;
 		this.javaFilePath = javaFilePath;
 		this.testSuiteName = testSuiteName;
 		this.testCaseName = testCaseName;
+		this.testPackageName = testPackageName;
 	}
 
 	public void writeExcelFile(String testCaseName) throws IOException,
 			WriteException {
 		List<TestActionInfo> lstTestCaseAction = new ParserTestCase(
-				javaFilePath).getLstTestCaseAction();
+				javaFilePath, this.testCaseName, this.testPackageName).getLstTestCaseAction();
 		if (lstTestCaseAction.isEmpty()) {
 			return;
 		}

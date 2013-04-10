@@ -23,7 +23,7 @@ import jp.co.amway.aurora.test.util.FileOperateUtil;
 import jxl.write.WriteException;
 
 public class ConvertFileFromIde {
-//	public static final boolean CONVERT_TO_SOURCE_DIR = true;
+	// public static final boolean CONVERT_TO_SOURCE_DIR = true;
 
 	/**
 	 * @param args
@@ -47,10 +47,15 @@ public class ConvertFileFromIde {
 					.getLstTestCase()) {
 				readExportJavaSource(testCaseClass);
 				String convertedFilePath = writeConvertJavaFile(testCaseClass);
-				WriteTestCaseXls writeTestCaseXls = new WriteTestCaseXls(suitePath, convertedFilePath,testSuiteInfo.getSuiteName(),testCaseClass.getClassName());
-				
+				WriteTestCaseXls writeTestCaseXls = new WriteTestCaseXls(
+						suitePath, convertedFilePath,
+						testSuiteInfo.getSuiteName(),
+						testCaseClass.getClassName(),
+						testCaseClass.getPackageName());
+
 				try {
-					writeTestCaseXls.writeExcelFile(testCaseClass.getClassName());
+					writeTestCaseXls.writeExcelFile(testCaseClass
+							.getClassName());
 				} catch (WriteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -122,7 +127,8 @@ public class ConvertFileFromIde {
 		return testSuiteInfo;
 	}
 
-	public static String writeConvertJavaFile(TestCaseClassInfo testCaseClassInfo) {
+	public static String writeConvertJavaFile(
+			TestCaseClassInfo testCaseClassInfo) {
 		String path = System.getProperty("user.dir")
 				+ "/resources/TestCaseTemplate";
 		StringBuilder sbTestCase = new StringBuilder();
@@ -158,36 +164,28 @@ public class ConvertFileFromIde {
 			}
 			br.close();
 
-			String sourcePath = createConvertSourceFolder(testCaseClassInfo);
+//			String sourcePath = createConvertSourceFolder(testCaseClassInfo);
+			createConvertSourceFolder(testCaseClassInfo);
 			File fConvert = new File(testCaseClassInfo.getFilePath().replace(
 					"JAVA_EXP", "JAVA_CONV"));
 			FileWriter fstream = new FileWriter(fConvert);
 			BufferedWriter outobj = new BufferedWriter(fstream);
 			outobj.write(sbTestCase.toString());
 			outobj.close();
-			if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
-				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
-						+ testCaseClassInfo.getClassName() + ".java"));
-			}
-                        return fConvert.getPath();
+//			if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
+//				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
+//						+ testCaseClassInfo.getClassName() + ".java"));
+//			}
+			return fConvert.getPath();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
-                return "";
+		return "";
 	}
 
-	private static String createConvertSourceFolder(
+	private static void createConvertSourceFolder(
 			TestCaseClassInfo testCaseClassInfo) {
 		String path = "";
-		String sourcePath = "";
-		if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
-			path = System.getProperty("user.dir") + "/src/"
-					+ testCaseClassInfo.getPackageName().replace(".", "/");
-			if (!new File(path).exists()) {
-				new File(path).mkdir();
-			}
-			sourcePath = path;
-		}
 
 		path = testCaseClassInfo.getFilePath()
 				.replace(testCaseClassInfo.getClassName() + ".java", "")
@@ -195,8 +193,6 @@ public class ConvertFileFromIde {
 		if (!new File(path).exists()) {
 			new File(path).mkdir();
 		}
-		System.out.println(sourcePath);
-		return sourcePath;
 	}
 
 	public static void readExportJavaSource(TestCaseClassInfo testCaseClassInfo) {

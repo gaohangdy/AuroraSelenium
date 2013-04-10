@@ -135,4 +135,14 @@ public class TestUtil {
 			driver.switchTo().alert().accept();
 		}
 	}
+	
+	public static void setChromeDriver() {
+		String exec = "";
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			exec = "windows/chromedriver.exe";
+		} else if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+			exec = "mac/chromedriver";
+		}
+		System.setProperty("webdriver.chrome.driver", "resources/driver/" + exec);
+	}
 }

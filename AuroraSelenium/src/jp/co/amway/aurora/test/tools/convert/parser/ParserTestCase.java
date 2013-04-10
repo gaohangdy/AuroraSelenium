@@ -29,7 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.io.FileUtils;
+
 import jp.co.amway.aurora.test.bean.TestActionInfo;
+import jp.co.amway.aurora.test.bean.TestCaseClassInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
 
 /**
@@ -42,9 +46,13 @@ public class ParserTestCase {
     private String filePath;
     private CompilationUnit cu;
     private List<TestActionInfo> lstFromXls = new ArrayList<TestActionInfo>();
+    private String className;
+    private String packageName;
 
-    public ParserTestCase(String filePath) {
+    public ParserTestCase(String filePath, String className, String packageName) {
         this.filePath = filePath;
+        this.className = className;
+        this.packageName = packageName;
     }
     
     public ParserTestCase(String filePath, List<TestActionInfo> lstFromXls) {
@@ -246,5 +254,25 @@ public class ParserTestCase {
 		BufferedWriter outobj = new BufferedWriter(fstream);
 		outobj.write(source);
 		outobj.close();
+		String sourcePath = createConvertSourceFolder();
+		if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
+			FileUtils.copyFile(fConvert, new File(sourcePath + "/"
+					+ this.className + ".java"));
+		}
+	}
+	
+	private String createConvertSourceFolder() {
+		String path = "";
+		String sourcePath = "";
+		if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
+			path = System.getProperty("user.dir") + "/src/"
+					+ this.packageName.replace(".", "/");
+			if (!new File(path).exists()) {
+				new File(path).mkdir();
+			}
+			sourcePath = path;
+		}
+		System.out.println(sourcePath);
+		return sourcePath;
 	}
 }

@@ -43,6 +43,7 @@ public class AuroraTestCase extends TestCase {
 		testUtil.createScreenShotFolder(getTestSuiteFolder());
 		// --Chrome
 		if ("2".equals(AuroraSeleniumConst.DRIVER_TYPE)) {
+			TestUtil.setChromeDriver();
 			DesiredCapabilities caps = DesiredCapabilities.chrome();
 			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
