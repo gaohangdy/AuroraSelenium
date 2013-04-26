@@ -6,28 +6,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.amway.aurora.test.bean.TestActionInfo;
+import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AuroraTestCaseHandler implements InvocationHandler {
-	private Object targetObject;
+	// private Object targetObject;
 	private Object parentObject;
 	private Object childObject;
 	private List<TestActionInfo> testActionList;
 	private TestUtil testUtil;
+	private int fetchIndex;
 
-	public AuroraTestCaseHandler(Object targetObject, Object parentObject,
-			Object childObject, List<TestActionInfo> testActionList,
-			TestUtil testUtil) {
-		this.targetObject = targetObject;
+	public AuroraTestCaseHandler(Object parentObject, Object childObject,
+			List<TestActionInfo> testActionList, TestUtil testUtil) {
+		// this.targetObject = targetObject;
 		this.parentObject = parentObject;
 		this.childObject = childObject;
 		this.testActionList = testActionList;
 		this.testUtil = testUtil;
+		this.fetchIndex = -1;
 	}
 
 	@Override
@@ -38,14 +41,41 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 			System.out.println("Excute Action Start : "
 					+ testAction.getComment());
 		}
-		// (new
-		// WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(""))));
 
-		new WebDriverWait((WebDriver) parentObject, 10)
-				.until(ExpectedConditions
+		WebDriverWait wait = new WebDriverWait((WebDriver) parentObject,
+				AuroraSeleniumConst.WAIT_PERIOD);
+		try {
+			if (By.id("_BACKGROUND_ID_") != null) {
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By
+						.id("_BACKGROUND_ID_")));
+			}
+			switch (method.getName()) {
+			case "click":
+			case "submit":
+				System.out.println("aaaaaaaaa");
+				wait.until(ExpectedConditions
+						.elementToBeClickable((By) childObject));
+				break;
+			case "sendKeys":
+			case "clear":
+				wait.until(ExpectedConditions
 						.presenceOfElementLocated((By) childObject));
+				break;
+			default:
+				wait.until(ExpectedConditions
+						.presenceOfElementLocated((By) childObject));
+			}
+		} catch (Exception ex) {
+			testActionList.get(fetchIndex).setStatus(false);
+			testActionList.get(fetchIndex).setErrMsg(ex.getMessage());
+			throw ex;
+		}
 
-		Object result = method.invoke(this.targetObject, args);
+		WebElement el = ((WebDriver) parentObject)
+				.findElement((By) this.childObject);
+		System.out.println("Target----" + el);
+		System.out.println("Method----" + method);
+		Object result = method.invoke(el, args);
 		if (testAction != null) {
 			if (testAction.isScreenShot()) {
 				this.testUtil.createScreenShot((WebDriver) parentObject);
@@ -57,6 +87,7 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 	}
 
 	private TestActionInfo fetchActionInfo(Method method) {
+		int intStep = 0;
 		for (TestActionInfo testAction : testActionList) {
 			System.out.println(("By" + testAction.getBy()).toLowerCase());
 			System.out.println(childObject.getClass().getName().split("\\$")[1]
@@ -78,8 +109,10 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 					&& method.getName().equals(testAction.getAction())
 					&& childObject.toString().split(":")[1].trim().equals(
 							testAction.getElement().replace("\"", ""))) {
+				this.fetchIndex = intStep;
 				return testAction;
 			}
+			intStep++;
 		}
 		return null;
 	}

@@ -8,6 +8,8 @@ public class AuroraSeleniumConst {
 	public static final boolean CONVERT_TO_SOURCE_DIR = "1"
 			.equals(getResourceBundle().getString("createtosource")) ? true
 			: false;
+	public static final int WAIT_PERIOD = Integer.parseInt(getResourceBundle().getString(
+			"wait_period"));
 	public final static String TEMPLATE_FILE_NAME = "TestCase_Template.xls";
 	public static final String[] WEBELEMENT_ACTION = { "click", "submit",
 			"sendKeys", "clear" };

@@ -1,23 +1,257 @@
-[0403/110801:INFO:chromedriver_server.cc(76)] Handling request: /status 
-[0403/110801:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":{"build":{"version":"alpha"},"os":{"arch":"x86_64","name":"Mac OS X","version":"10.7.5"}}}
-[0403/110802:INFO:chromedriver_server.cc(76)] Handling request: /session {"desiredCapabilities":{"platform":"ANY","acceptSslCerts":true,"browserName":"chrome","version":""}}
-[0403/110802:INFO:chrome_desktop_impl.cc(49)] Using chrome from /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
-[0403/110810:INFO:chromedriver_server.cc(81)] Done handling request: 303 
-[0403/110810:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d 
-[0403/110810:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":{"acceptSslCerts":true,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","cssSelectorsEnabled":true,"databaseEnabled":true,"driverVersion":"0.6","handlesAlerts":true,"javascriptEnabled":true,"locationContextEnabled":true,"nativeEvents":true,"platform":"Mac OS X","rotatable":false,"takesScreenshot":true,"version":"26.0.1410.43","webStorageEnabled":true}}
-[0403/110810:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/cookie 
-[0403/110811:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":null}
-[0403/110811:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/timeouts/implicit_wait {"ms":30000}
-[0403/110811:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":null}
-[0403/110811:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/url {"url":"https://ipdev.amwaylive.com//aurora/source/ts/uc_common/view/WA-C-01-F012.html"}
-[0403/112419:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":null}
-[0403/112419:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/element {"using":"css selector","value":"a.naviOpen.naviOpenBtn > div > span"}
-[0403/112419:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":{"ELEMENT":"1"}}
-[0403/112419:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/element {"using":"css selector","value":"a.naviOpen.naviOpenBtn > div > span"}
-[0403/112419:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":{"ELEMENT":"1"}}
-[0403/112419:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d/element/1/click {"id":"1"}
-[0403/112420:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":13,"value":{"message":"unknown error: Element is not clickable at point (30, 21). Other element would receive the click: \u003Cdiv id=\"_BACKGROUND_ID_\" class=\"section loading-bg\" style=\"\"\u003E...\u003C/div\u003E\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
-[0403/112420:INFO:chromedriver_server.cc(76)] Handling request: /session/7de2a7dd9ad7739ed5f0e2307aa15a1d 
-[0403/112420:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"7de2a7dd9ad7739ed5f0e2307aa15a1d","status":0,"value":null}
-[0403/112420:INFO:chromedriver_server.cc(76)] Handling request: /shutdown 
-[0403/112420:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":null}
+[0426/110523:INFO:chromedriver_server.cc(76)] Handling request: /status 
+[0426/110523:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":{"build":{"version":"alpha"},"os":{"arch":"x86_64","name":"Mac OS X","version":"10.7.5"}}}
+[0426/110524:INFO:chromedriver_server.cc(76)] Handling request: /session {"desiredCapabilities":{"platform":"ANY","acceptSslCerts":true,"browserName":"chrome","version":""}}
+[0426/110524:INFO:chrome_desktop_impl.cc(49)] Using chrome from /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+[0426/110524:INFO:chromedriver_server.cc(81)] Done handling request: 303 
+[0426/110524:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694 
+[0426/110524:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"acceptSslCerts":true,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","cssSelectorsEnabled":true,"databaseEnabled":true,"driverVersion":"0.6","handlesAlerts":true,"javascriptEnabled":true,"locationContextEnabled":true,"nativeEvents":true,"platform":"Mac OS X","rotatable":false,"takesScreenshot":true,"version":"26.0.1410.43","webStorageEnabled":true}}
+[0426/110524:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/cookie 
+[0426/110525:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110525:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/timeouts/implicit_wait {"ms":30000}
+[0426/110525:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110525:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/url {"url":"https://ipdev.amwaylive.com//aurora/source/ts/uc_common/view/WA-C-01-F012.html"}
+[0426/110738:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110739:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"a.naviOpen.naviOpenBtn > div > span"}
+[0426/110739:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"1"}}
+[0426/110739:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"a.naviOpen.naviOpenBtn > div > span"}
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"1"}}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/1/displayed 
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/1/enabled 
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"a.naviOpen.naviOpenBtn > div > span"}
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"1"}}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/1/click {"id":"1"}
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"aMenuLogin"}
+[0426/110809:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"2"}}
+[0426/110809:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110839:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/110839:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"aMenuLogin"}
+[0426/110839:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"2"}}
+[0426/110839:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/2/displayed 
+[0426/110839:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110839:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/2/enabled 
+[0426/110839:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110839:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"aMenuLogin"}
+[0426/110840:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"2"}}
+[0426/110840:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/2/click {"id":"2"}
+[0426/110840:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110840:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"link text","value":"パスワードを忘れた方"}
+[0426/110840:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"3"}}
+[0426/110840:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110840:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"4"}}
+[0426/110840:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/4/displayed 
+[0426/110840:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110841:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110841:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"4"}}
+[0426/110841:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/4/displayed 
+[0426/110841:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110841:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"link text","value":"パスワードを忘れた方"}
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"5"}}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/5/displayed 
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/5/enabled 
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"link text","value":"パスワードを忘れた方"}
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"5"}}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/5/click {"id":"5"}
+[0426/110916:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110916:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"chkHaveNoPinFlg"}
+[0426/110919:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"6"}}
+[0426/110919:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110919:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"7"}}
+[0426/110919:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/7/displayed 
+[0426/110919:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110920:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"chkHaveNoPinFlg"}
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"6"}}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/6/displayed 
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/6/enabled 
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"chkHaveNoPinFlg"}
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"6"}}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/6/click {"id":"6"}
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/110950:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/110950:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111020:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111020:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/111020:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/111020:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/111020:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/111020:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/8/clear {"id":"8"}
+[0426/111020:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111020:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/111020:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/111020:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111050:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111050:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/111050:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/111050:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtIboNumber"}
+[0426/111050:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"8"}}
+[0426/111050:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/8/value {"id":"8","value":["\"5243017\""]}
+[0426/111051:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111051:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111051:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111051:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111121:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111121:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111121:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111121:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111121:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111121:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/9/clear {"id":"9"}
+[0426/111121:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111121:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111121:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111121:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111151:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111151:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111151:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111151:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeThree"}
+[0426/111151:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"9"}}
+[0426/111151:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/9/value {"id":"9","value":["\"010\""]}
+[0426/111151:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111151:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111151:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111151:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111221:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111221:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111221:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111221:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111221:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111221:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/10/clear {"id":"10"}
+[0426/111221:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111221:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111221:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111221:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111251:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111251:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111251:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111251:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"txtZipCodeFour"}
+[0426/111251:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"10"}}
+[0426/111251:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/10/value {"id":"10","value":["\"0042\""]}
+[0426/111251:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111251:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111251:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111251:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111321:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111321:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111321:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111321:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111321:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111321:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/11/name 
+[0426/111321:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":"select"}
+[0426/111321:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111351:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111351:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111351:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111351:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111351:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111351:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/11/attribute/multiple 
+[0426/111352:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111352:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"xpath","value":".//option[normalize-space(.) = 'By.id(\"selBirthYear\")']"}
+[0426/111422:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111422:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthYear"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"11"}}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/11/elements {"id":"11","using":"xpath","value":".//option[normalize-space(.) = \"1973\"]"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":[{"ELEMENT":"12"}]}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/12/selected 
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":false}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/12/click {"id":"12"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111452:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111452:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111522:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111522:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111522:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111522:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111522:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111522:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/13/name 
+[0426/111522:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":"select"}
+[0426/111522:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111552:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111552:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111552:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111552:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111552:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111552:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/13/attribute/multiple 
+[0426/111552:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111552:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"xpath","value":".//option[normalize-space(.) = 'By.id(\"selBirthMonth\")']"}
+[0426/111622:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111622:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthMonth"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"13"}}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/13/elements {"id":"13","using":"xpath","value":".//option[normalize-space(.) = \"6\"]"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":[{"ELEMENT":"14"}]}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/14/selected 
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":false}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/14/click {"id":"14"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111652:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111652:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111722:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111722:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111722:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111722:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111722:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111722:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/15/name 
+[0426/111722:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":"select"}
+[0426/111722:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111752:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111752:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111752:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111752:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111752:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111752:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/15/attribute/multiple 
+[0426/111752:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111752:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"xpath","value":".//option[normalize-space(.) = 'By.id(\"selBirthDay\")']"}
+[0426/111823:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111823:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"selBirthDay"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"15"}}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/15/elements {"id":"15","using":"xpath","value":".//option[normalize-space(.) = \"28\"]"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":[{"ELEMENT":"16"}]}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/16/selected 
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":false}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/16/click {"id":"16"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"#btnSetPassword > div"}
+[0426/111853:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"17"}}
+[0426/111853:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"id","value":"_BACKGROUND_ID_"}
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"#btnSetPassword > div"}
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"17"}}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/17/displayed 
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/17/enabled 
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":true}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"#btnSetPassword > div"}
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":{"ELEMENT":"17"}}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element/17/click {"id":"17"}
+[0426/111923:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111923:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694/element {"using":"css selector","value":"#btnToHome > div"}
+[0426/111953:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":7,"value":{"message":"no such element\n  (Session info: chrome=26.0.1410.43)\n  (Driver info: chromedriver=0.6,platform=Mac OS X 10.7.5 x86_64)"}}
+[0426/111953:INFO:chromedriver_server.cc(76)] Handling request: /session/dbe2f61d5d4fdc28c922fdd3abf9d694 
+[0426/111953:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"dbe2f61d5d4fdc28c922fdd3abf9d694","status":0,"value":null}
+[0426/111953:INFO:chromedriver_server.cc(76)] Handling request: /shutdown 
+[0426/111953:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":null}

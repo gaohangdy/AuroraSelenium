@@ -18,13 +18,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AuroraSelect extends Select {
 	private List<TestActionInfo> testActionList;
 	private String elementText;
+	private WebDriver driver;
 
 	public AuroraSelect(WebElement element,
-			List<TestActionInfo> testActionList, String elementText) {
+			List<TestActionInfo> testActionList, String elementText,
+			WebDriver driver) {
 		super(element);
 		this.elementText = elementText;
 		this.testActionList = testActionList;
+
+//		List<WebElement> options = element.findElements(By
+//				.xpath(".//option[normalize-space(.) = "
+//						+ escapeQuotes(elementText) + "]"));
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(By
+					.xpath(".//option[normalize-space(.) = "
+							+ escapeQuotes(elementText) + "]")));
+		} catch (Exception ex) {
+
+		}
 	}
+
 	@Override
 	public void selectByVisibleText(String text) {
 		TestActionInfo testAction = fetchActionInfo(new Throwable()

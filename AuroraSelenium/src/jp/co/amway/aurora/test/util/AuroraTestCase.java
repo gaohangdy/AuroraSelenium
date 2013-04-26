@@ -162,43 +162,26 @@ public class AuroraTestCase extends TestCase {
 		}
 		return "";
 	}
-	
+
 	protected WebElement findElement(By by) {
-        WebElement el = driver.findElement(by);
-        //拦截器对象  
-        AuroraTestCaseHandler handler = new AuroraTestCaseHandler(el, driver, by, testActionList, testUtil);   
-           
-        //返回业务对象的代理对象  
-        WebElement proxy = (WebElement)Proxy.newProxyInstance(   
-        		el.getClass().getClassLoader(),    
-        		el.getClass().getInterfaces(),    
-                handler);   
-           return proxy;
-//        //通过代理对象执行业务对象的方法  
-//        proxy.click(); 
-		
-		
-		
-		
-//		new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
-//			@Override
-//			public Boolean apply(WebDriver d) {
-//				return true;
-//			}
-//		});
-		
-//		(new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")))).click();
-//		return null;
-		
+		WebElement el = driver.findElement(by);
+		// captured object
+		AuroraTestCaseHandler handler = new AuroraTestCaseHandler(driver,
+				by, testActionList, testUtil);
+
+		// return work object of proxy object
+		WebElement proxy = (WebElement) Proxy.newProxyInstance(el.getClass()
+				.getClassLoader(), el.getClass().getInterfaces(), handler);
+		return proxy;
+
 	}
-	
+
 	protected Select select(WebElement element) {
 		Select sel = new Select(element);
-		AuroraSelectHandler handler = new AuroraSelectHandler(sel, driver, testActionList, testUtil);
-        Select proxy = (Select)Proxy.newProxyInstance(   
-        		sel.getClass().getClassLoader(),    
-        		sel.getClass().getInterfaces(),    
-                handler);   
-           return proxy;
+		AuroraSelectHandler handler = new AuroraSelectHandler(sel, driver,
+				testActionList, testUtil);
+		Select proxy = (Select) Proxy.newProxyInstance(sel.getClass()
+				.getClassLoader(), sel.getClass().getInterfaces(), handler);
+		return proxy;
 	}
 }

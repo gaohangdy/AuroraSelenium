@@ -235,6 +235,10 @@ public class ParserTestCase {
             	
             	methodCallExpr.getArgs().set(0, tmpMdExpr);
             	objCExpr.getArgs().add(tmpSExpr);
+            	
+            	NameExpr driverExpr = new NameExpr();
+            	driverExpr.setName("driver");
+            	objCExpr.getArgs().add(driverExpr);
             }
        
             fetchByStatement((MethodCallExpr)((ObjectCreationExpr) methodCallExpr.getScope()).getArgs().get(0), testActionInfo);
