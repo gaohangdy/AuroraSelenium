@@ -37,7 +37,8 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		TestActionInfo testAction = fetchActionInfo(method);
-		if (testAction != null) {
+		if (testAction != null && testAction.getComment() != null
+				&& !"".equals(testAction.getComment())) {
 			System.out.println("Excute Action Start : "
 					+ testAction.getComment());
 		}
@@ -52,7 +53,6 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 			switch (method.getName()) {
 			case "click":
 			case "submit":
-				System.out.println("aaaaaaaaa");
 				wait.until(ExpectedConditions
 						.elementToBeClickable((By) childObject));
 				break;
@@ -73,15 +73,16 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 
 		WebElement el = ((WebDriver) parentObject)
 				.findElement((By) this.childObject);
-		System.out.println("Target----" + el);
-		System.out.println("Method----" + method);
 		Object result = method.invoke(el, args);
 		if (testAction != null) {
 			if (testAction.isScreenShot()) {
 				this.testUtil.createScreenShot((WebDriver) parentObject);
 			}
-			System.out.println("Excute Action Success : "
-					+ testAction.getComment());
+			if (testAction.getComment() != null
+					&& !"".equals(testAction.getComment())) {
+				System.out.println("Excute Action Success : "
+						+ testAction.getComment());
+			}
 		}
 		return result;
 	}
