@@ -8,11 +8,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 import jp.co.amway.aurora.test.bean.TestCaseClassInfo;
 import jp.co.amway.aurora.test.bean.TestSuiteInfo;
@@ -44,7 +44,12 @@ public class ConvertFileFromIde {
 
 			for (TestCaseClassInfo testCaseClass : testSuiteInfo
 					.getLstTestCase()) {
-				readExportJavaSource(testCaseClass);
+				try {
+					readExportJavaSource(testCaseClass);
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+					continue;
+				}
 				String convertedFilePath = writeConvertJavaFile(testCaseClass);
 				WriteTestCaseXls writeTestCaseXls = new WriteTestCaseXls(
 						suitePath, convertedFilePath,
@@ -88,7 +93,7 @@ public class ConvertFileFromIde {
 					if ("import junit.framework.TestSuite;".equals(row.trim())) {
 						System.out.println("Testsuite:["
 								+ f.getName().toLowerCase().split("\\.")[0]
-								+ "] has been fund!");
+								+ "] has been matched!");
 						testSuiteInfo.setSuiteName(f.getName().toLowerCase()
 								.split("\\.")[0]);
 						matchedTestSuite = true;
@@ -163,7 +168,7 @@ public class ConvertFileFromIde {
 			}
 			br.close();
 
-//			String sourcePath = createConvertSourceFolder(testCaseClassInfo);
+			// String sourcePath = createConvertSourceFolder(testCaseClassInfo);
 			createConvertSourceFolder(testCaseClassInfo);
 			File fConvert = new File(testCaseClassInfo.getFilePath().replace(
 					"JAVA_EXP", "JAVA_CONV"));
@@ -171,10 +176,10 @@ public class ConvertFileFromIde {
 			BufferedWriter outobj = new BufferedWriter(fstream);
 			outobj.write(sbTestCase.toString());
 			outobj.close();
-//			if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
-//				FileUtils.copyFile(fConvert, new File(sourcePath + "/"
-//						+ testCaseClassInfo.getClassName() + ".java"));
-//			}
+			// if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
+			// FileUtils.copyFile(fConvert, new File(sourcePath + "/"
+			// + testCaseClassInfo.getClassName() + ".java"));
+			// }
 			return fConvert.getPath();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
@@ -194,46 +199,43 @@ public class ConvertFileFromIde {
 		}
 	}
 
-	public static void readExportJavaSource(TestCaseClassInfo testCaseClassInfo) {
+	public static void readExportJavaSource(TestCaseClassInfo testCaseClassInfo)
+			throws MalformedURLException, IOException {
 		StringBuilder sbTestCase = new StringBuilder();
-		try {
-			String encoding = "";
-			File f = new File(testCaseClassInfo.getFilePath());
-			encoding = FileOperateUtil.getFileCharacterEnding(f);
-			InputStreamReader read = null;
+		String encoding = "";
+		File f = new File(testCaseClassInfo.getFilePath());
+		encoding = FileOperateUtil.getFileCharacterEnding(f);
+		InputStreamReader read = null;
 
-			read = new InputStreamReader(new FileInputStream(f), encoding);
+		read = new InputStreamReader(new FileInputStream(f), encoding);
 
-			BufferedReader br = new BufferedReader(read);
-			String row;
-			boolean matchedTestCase = false;
-			boolean matchedFirstBrackets = false;
-			int pairBrackets = 0;
-			while ((row = br.readLine()) != null) {
-				if ("@Test".equals(row.trim()) && !matchedTestCase) {
-					matchedTestCase = true;
+		BufferedReader br = new BufferedReader(read);
+		String row;
+		boolean matchedTestCase = false;
+		boolean matchedFirstBrackets = false;
+		int pairBrackets = 0;
+		while ((row = br.readLine()) != null) {
+			if ("@Test".equals(row.trim()) && !matchedTestCase) {
+				matchedTestCase = true;
+			}
+			if (matchedTestCase) {
+				if (matchedFirstBrackets && pairBrackets == 0) {
+					break;
 				}
-				if (matchedTestCase) {
-					if (matchedFirstBrackets && pairBrackets == 0) {
-						break;
-					}
-					if (row.contains("{")) {
-						matchedFirstBrackets = true;
-						pairBrackets++;
-						sbTestCase.append(row).append("\n");
-					} else if (row.contains("}")) {
-						pairBrackets--;
-						sbTestCase.append(row).append("\n");
-					} else {
-						sbTestCase.append(row).append("\n");
-					}
+				if (row.contains("{")) {
+					matchedFirstBrackets = true;
+					pairBrackets++;
+					sbTestCase.append(row).append("\n");
+				} else if (row.contains("}")) {
+					pairBrackets--;
+					sbTestCase.append(row).append("\n");
+				} else {
+					sbTestCase.append(row).append("\n");
 				}
 			}
-			testCaseClassInfo.setTestCaseSource(sbTestCase);
-			br.close();
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
 		}
+		testCaseClassInfo.setTestCaseSource(sbTestCase);
+		br.close();
 	}
 
 	public void rewriteJavaSource(String path) {

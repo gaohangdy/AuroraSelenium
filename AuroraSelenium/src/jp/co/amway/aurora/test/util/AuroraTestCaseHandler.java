@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import jp.co.amway.aurora.test.bean.TestActionInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
@@ -46,10 +47,12 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 		WebDriverWait wait = new WebDriverWait((WebDriver) parentObject,
 				AuroraSeleniumConst.WAIT_PERIOD);
 		try {
-			if (By.id("_BACKGROUND_ID_") != null) {
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By
-						.id("_BACKGROUND_ID_")));
-			}
+			((WebDriver) parentObject).manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//			if (By.id("_BACKGROUND_ID_") != null) {
+//				new WebDriverWait((WebDriver) parentObject,
+//						AuroraSeleniumConst.WAIT_PERIOD).until(ExpectedConditions.invisibilityOfElementLocated(By
+//						.id("_BACKGROUND_ID_")));
+//			}
 			switch (method.getName()) {
 			case "click":
 			case "submit":
@@ -59,7 +62,7 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 			case "sendKeys":
 			case "clear":
 				wait.until(ExpectedConditions
-						.presenceOfElementLocated((By) childObject));
+						.elementToBeClickable((By) childObject));
 				break;
 			default:
 				wait.until(ExpectedConditions
@@ -73,7 +76,24 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 
 		WebElement el = ((WebDriver) parentObject)
 				.findElement((By) this.childObject);
-		Object result = method.invoke(el, args);
+		System.out.println("Execute method : " + method);
+		System.out.println("WebElement : " + el);
+		Object result = null;
+		
+		int count = 0; 
+		while (count < 4){
+			try {
+				result = method.invoke(el, args);
+				break;
+			} catch (Exception ex) {
+				if (count >= 4) {
+					throw ex;
+				}
+				Thread.sleep(AuroraSeleniumConst.WAIT_PERIOD * 1000);
+				count++;
+			}
+		}
+		
 		if (testAction != null) {
 			if (testAction.isScreenShot()) {
 				this.testUtil.createScreenShot((WebDriver) parentObject);

@@ -54,7 +54,7 @@ public class ReadTestCaseXls {
 			testActionInfo.setAction(rs.getCell(3, intStep).getContents());
 			if (!"null".equals(rs.getCell(4, intStep).getContents())
 					&& !"".equals(rs.getCell(4, intStep).getContents())) {
-				testActionInfo.setValue(rs.getCell(4, intStep).getContents());
+				testActionInfo.setValue(rs.getCell(4, intStep).getContents().substring(1, rs.getCell(4, intStep).getContents().length() - 1));
 			}
 			if ("YES"
 					.equals(rs.getCell(5, intStep).getContents().toUpperCase())) {

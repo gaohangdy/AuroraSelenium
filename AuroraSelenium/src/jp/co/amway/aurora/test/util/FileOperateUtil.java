@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +94,10 @@ public class FileOperateUtil {
 	 * 
 	 * @param file
 	 * @return
+	 * @throws IOException 
+	 * @throws MalformedURLException 
 	 */
-	public static String getFileCharacterEnding(File file) {
+	public static String getFileCharacterEnding(File file) throws MalformedURLException, IOException {
 
 		String fileCharacterEnding = "UTF-8";
 
@@ -103,13 +106,8 @@ public class FileOperateUtil {
 
 		Charset charset = null;
 
-		// File f = new File(filePath);
+		charset = detector.detectCodepage(file.toURL());
 
-		try {
-			charset = detector.detectCodepage(file.toURL());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		if (charset != null) {
 			fileCharacterEnding = charset.name();
 		}
@@ -147,18 +145,18 @@ public class FileOperateUtil {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
+
 	public static String fetchTestSuiteFolder(String testSuiteName) {
 		String path = System.getProperty("user.dir")
 				+ "/resources/TestCase_Convert";
 		File file = new File(path);
-		
-		for (String subFolder: file.list()) {
+
+		for (String subFolder : file.list()) {
 			if (testSuiteName.equals(subFolder.replace("-", "").toLowerCase())) {
 				return path + "/" + subFolder;
 			}
 		}
-		
+
 		return "";
 	}
 }
