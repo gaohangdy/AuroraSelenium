@@ -110,19 +110,19 @@ public class AuroraTestCaseHandler implements InvocationHandler {
 	private TestActionInfo fetchActionInfo(Method method) {
 		int intStep = 0;
 		for (TestActionInfo testAction : testActionList) {
-			System.out.println(("By" + testAction.getBy()).toLowerCase());
-			System.out.println(childObject.getClass().getName().split("\\$")[1]
-					.toLowerCase());
-			System.out.println(method.getName());
-			System.out.println(testAction.getAction());
-			System.out.println(childObject.toString().split(":")[1].trim());
-			System.out.println(testAction.getElement().replace("\"", ""));
-			System.out.println(("By" + testAction.getBy()).toLowerCase()
-					.equals(childObject.getClass().getName().split("\\$")[1]
-							.toLowerCase()));
-			System.out.println(method.getName().equals(testAction.getAction()));
-			System.out.println(childObject.toString().split(":")[1].trim()
-					.equals(testAction.getElement().replace("\"", "")));
+//			System.out.println(("By" + testAction.getBy()).toLowerCase());
+//			System.out.println(childObject.getClass().getName().split("\\$")[1]
+//					.toLowerCase());
+//			System.out.println(method.getName());
+//			System.out.println(testAction.getAction());
+//			System.out.println(childObject.toString().split(":")[1].trim());
+//			System.out.println(testAction.getElement().replace("\"", ""));
+//			System.out.println(("By" + testAction.getBy()).toLowerCase()
+//					.equals(childObject.getClass().getName().split("\\$")[1]
+//							.toLowerCase()));
+//			System.out.println(method.getName().equals(testAction.getAction()));
+//			System.out.println(childObject.toString().split(":")[1].trim()
+//					.equals(testAction.getElement().replace("\"", "")));
 
 			if (("By" + testAction.getBy()).toLowerCase().equals(
 					childObject.getClass().getName().split("\\$")[1]

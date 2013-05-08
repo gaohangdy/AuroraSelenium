@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 import jp.co.amway.aurora.test.bean.TestCaseClassInfo;
 import jp.co.amway.aurora.test.bean.TestSuiteInfo;
 import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
+import jp.co.amway.aurora.test.tools.convert.parser.ParserTestSuite;
 import jp.co.amway.aurora.test.tools.convert.parser.WriteTestCaseXls;
 import jp.co.amway.aurora.test.util.FileOperateUtil;
 import jxl.write.WriteException;
@@ -41,6 +42,8 @@ public class ConvertFileFromIde {
 					lstTestCase);
 			TestSuiteInfo testSuiteInfo = fetchTestSuite(lstTestCase, suitePath
 					+ "/" + "JAVA_EXP");
+			
+			new ParserTestSuite().convertTestSuite(testSuiteInfo.getSuiteFilePath(), testSuiteInfo.getSuiteName());
 
 			for (TestCaseClassInfo testCaseClass : testSuiteInfo
 					.getLstTestCase()) {
@@ -94,8 +97,11 @@ public class ConvertFileFromIde {
 						System.out.println("Testsuite:["
 								+ f.getName().toLowerCase().split("\\.")[0]
 								+ "] has been matched!");
+						//set testsuite name
 						testSuiteInfo.setSuiteName(f.getName().toLowerCase()
 								.split("\\.")[0]);
+						//set testsuite file's path
+						testSuiteInfo.setSuiteFilePath(path);
 						matchedTestSuite = true;
 					} else if (row.contains("@")) {
 						break;

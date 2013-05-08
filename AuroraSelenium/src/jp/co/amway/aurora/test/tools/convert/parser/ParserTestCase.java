@@ -130,8 +130,6 @@ public class ParserTestCase {
 							}
 						}
 					}
-
-					MethodDeclaration method = (MethodDeclaration) member;
 				}
 			}
 		}

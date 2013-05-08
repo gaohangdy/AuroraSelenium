@@ -1,12 +1,9 @@
 package jp.co.amway.aurora.test.util;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.amway.aurora.test.bean.TestActionInfo;
+import jp.co.amway.aurora.test.constant.AuroraSeleniumConst;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AuroraSelect extends Select {
 	private List<TestActionInfo> testActionList;
 	private String elementText;
-	private WebDriver driver;
 
 	public AuroraSelect(WebElement element,
 			List<TestActionInfo> testActionList, String elementText,
@@ -27,17 +23,14 @@ public class AuroraSelect extends Select {
 		this.elementText = elementText;
 		this.testActionList = testActionList;
 
-//		List<WebElement> options = element.findElements(By
-//				.xpath(".//option[normalize-space(.) = "
-//						+ escapeQuotes(elementText) + "]"));
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(By
-					.xpath(".//option[normalize-space(.) = "
-							+ escapeQuotes(elementText) + "]")));
-		} catch (Exception ex) {
-
-		}
+		// List<WebElement> options = element.findElements(By
+		// .xpath(".//option[normalize-space(.) = "
+		// + escapeQuotes(elementText) + "]"));
+		WebDriverWait wait = new WebDriverWait(driver,
+				AuroraSeleniumConst.WAIT_PERIOD);
+		wait.until(ExpectedConditions.elementToBeClickable(By
+				.xpath(".//option[normalize-space(.) = "
+						+ escapeQuotes(elementText) + "]")));
 	}
 
 	@Override

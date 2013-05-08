@@ -1,20 +1,12 @@
 package jp.co.amway.aurora.test.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.amway.aurora.test.bean.TestActionInfo;
-import jxl.CellType;
-import jxl.Sheet;
 import jxl.Workbook;
-import jxl.read.biff.BiffException;
-import jxl.write.Label;
-import jxl.write.WritableCell;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
@@ -26,10 +18,6 @@ public class AuroraExcelUtil {
 		// TODO Auto-generated method stub
 		try {
 			try {
-				File templateXls = new File(AuroraExcelUtil.class.getResource(
-						"").getPath()
-						+ "TestCase_Template.xls");
-				File createXls = new File("OutputTest.xls");
 				writeExcelFile("LoginDA001");
 				// getExcelFile();
 			} catch (WriteException e) {
@@ -56,7 +44,6 @@ public class AuroraExcelUtil {
 			Workbook rwb = Workbook.getWorkbook(templateXls);
 			WritableWorkbook wwb = Workbook.createWorkbook(testCaseXls, rwb);// copy
 			WritableSheet ws = wwb.getSheet(0);
-			WritableCell wc = ws.getWritableCell(1, 1);
 			jxl.write.Label lbl = new jxl.write.Label(1, 1, "aaaaaa");
 			ws.addCell(lbl);
 			wwb.write();

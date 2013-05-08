@@ -2,6 +2,7 @@ package jp.co.amway.aurora.test.util;
 
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +18,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,8 +45,8 @@ public class AuroraTestCase extends TestCase {
 		if ("2".equals(AuroraSeleniumConst.DRIVER_TYPE)) {
 			TestUtil.setChromeDriver();
 			DesiredCapabilities caps = DesiredCapabilities.chrome();
-			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-
+//			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			caps.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
 			driver = new ChromeDriver(caps);
 			driver.manage().deleteAllCookies();
 			baseUrl = "https://ipdev.amwaylive.com/";
@@ -83,7 +83,7 @@ public class AuroraTestCase extends TestCase {
 
 	protected String closeAlertAndGetItsText() {
 		try {
-			(new WebDriverWait(driver, 10)).until(ExpectedConditions
+			(new WebDriverWait(driver, AuroraSeleniumConst.WAIT_PERIOD)).until(ExpectedConditions
 					.alertIsPresent());
 			Alert alert = driver.switchTo().alert();
 			String alertMessage = alert.getText();

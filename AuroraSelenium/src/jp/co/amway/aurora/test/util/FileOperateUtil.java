@@ -28,13 +28,13 @@ public class FileOperateUtil {
 				if (subFile.isDirectory()) {
 					if (new File(subFile.getPath() + "/" + "JAVA_CONV")
 							.exists()) {
-						System.out.println("Converted TestSuite:"
-								+ subFile.getPath());
+						System.out.println("Java files have been converted under this folder.  ["
+								+ subFile.getPath() + "]");
 						return false;
 					} else if (!new File(subFile.getPath() + "/" + "JAVA_EXP")
 							.exists()) {
-						System.out.println("No Export Java TestSuite:"
-								+ subFile.getPath());
+						System.out.println("Cannot find exported java files under this folder. ["
+								+ subFile.getPath() + "]");
 						return false;
 					} else if (!new File(subFile.getPath() + "/" + "JAVA_CONV")
 							.exists()) {
