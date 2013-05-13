@@ -102,7 +102,7 @@ public class ParserTestSuite {
 		String sourcePath = createConvertSourceFolder();
 		if (AuroraSeleniumConst.CONVERT_TO_SOURCE_DIR) {
 			FileUtils.copyFile(fConvert, new File(sourcePath + "/"
-					+ testSuiteName + ".java"));
+					+ fileName));
 		}
 	}
 
